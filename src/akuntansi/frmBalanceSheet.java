@@ -34,6 +34,42 @@ public class frmBalanceSheet extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    private void loadCash(Date from, Date till) {
+        try {
+            String sql = "select ac.chartname, j.debit-j.kredit as cashdecrease from jurnal j inner join accountchart ac on "
+                    + "j.chartno = ac.chartno where j.chartno in (1010,3030) and description = 'cash' and "
+                    + "j.tanggal between ? and ? group by j.chartno;";
+
+            PreparedStatement pstatement = conn.prepareStatement(sql);
+
+            java.sql.Date datefrom = new java.sql.Date(from.getTime());
+            java.sql.Date datetill = new java.sql.Date(till.getTime());
+
+            pstatement.setDate(1, datefrom);
+            pstatement.setDate(2, datetill);
+
+            ResultSet rs = pstatement.executeQuery();
+            if (rs.isBeforeFirst()) { // check is resultset not empty
+                while (rs.next()) {
+                    DefaultTableModel tableModel = (DefaultTableModel) tblAsset.getModel();
+
+                    Object data[] = {
+                        rs.getString("ac.chartname"),
+                        rs.getInt("cash")
+                    };
+                    tableModel.addRow(data);
+                }
+            } else {
+//                util.Sutil.msg(this, "Record Empty");
+            }
+
+            rs.close();
+            pstatement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmBalanceSheet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     private void loadAsset(Date from, Date till) {
         try {
@@ -109,8 +145,45 @@ public class frmBalanceSheet extends javax.swing.JFrame {
 
     private void loadCapital(Date from, Date till) {
         try {
-            String sql = "select ac.chartname, -(j.debit-j.kredit) as capital from jurnal j inner join accountchart ac on "
-                    + "j.chartno = ac.chartno where j.chartno like '3%%%' and "
+            String sql = "select ac.chartname, sum(-(j.debit-j.kredit)) as capital from jurnal j inner join accountchart ac on "
+                    + "j.chartno = ac.chartno where j.chartno like '3010' and "
+                    + "j.tanggal between ? and ? group by j.chartno;";
+
+            PreparedStatement pstatement = conn.prepareStatement(sql);
+
+            java.sql.Date datefrom = new java.sql.Date(from.getTime());
+            java.sql.Date datetill = new java.sql.Date(till.getTime());
+
+            pstatement.setDate(1, datefrom);
+            pstatement.setDate(2, datetill);
+
+            ResultSet rs = pstatement.executeQuery();
+            if (rs.isBeforeFirst()) { // check is resultset not empty
+                while (rs.next()) {
+                    DefaultTableModel tableModel = (DefaultTableModel) tblCapital.getModel();
+                    
+                    Object data[] = {
+                        rs.getString("ac.chartname"),
+                        rs.getInt("capital")
+                    };
+                    tableModel.addRow(data);
+
+                }
+            } else {
+//                util.Sutil.msg(this, "Record Empty");
+            }
+
+            rs.close();
+            pstatement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(frmBalanceSheet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void loadPrive(Date from, Date till) {
+        try {
+            String sql = "select ac.chartname, j.debit-j.kredit as capital from jurnal j inner join accountchart ac on "
+                    + "j.chartno = ac.chartno where j.chartno like '3030' and "
                     + "j.tanggal between ? and ? group by j.chartno;";
 
             PreparedStatement pstatement = conn.prepareStatement(sql);
@@ -146,7 +219,7 @@ public class frmBalanceSheet extends javax.swing.JFrame {
 
     private void loadProfitLoss(Date from, Date till) {
         try {
-            String sql = "select profitloss from profitloss where tanggaltill between ? and ? ;";
+            String sql = "select profitloss as profitloss1 from profitloss where tanggaltill between ? and ? ;";
 
             PreparedStatement pstatement = conn.prepareStatement(sql);
 
@@ -162,10 +235,10 @@ public class frmBalanceSheet extends javax.swing.JFrame {
                     DefaultTableModel tableModel = (DefaultTableModel) tblCapital.getModel();
 
                     String profit = "Profit-Loss";
-                    double valueprofit = -(rs.getDouble("profitloss"));
+                    
                     Object data[] = {
                         profit,
-                        valueprofit
+                        rs.getDouble("profitloss1")
                     };
                     tableModel.addRow(data);
                 }
@@ -462,6 +535,7 @@ public class frmBalanceSheet extends javax.swing.JFrame {
 
 //                Capital
                 loadCapital(datefrom, datetill);
+                loadPrive(datefrom, datetill);
                 loadProfitLoss(datefrom, datetill);
                 totalCapital();
 
