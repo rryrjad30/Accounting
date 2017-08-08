@@ -33,7 +33,7 @@
                       <Component id="txtSearchCustomer" min="-2" pref="350" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="299" max="32767" attributes="0"/>
+                      <EmptySpace pref="254" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="587" max="32767" attributes="0"/>
@@ -116,7 +116,7 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Search : "/>
+        <Property name="text" type="java.lang.String" value="Search by Name : "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearchCustomer">

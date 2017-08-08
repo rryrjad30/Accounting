@@ -83,7 +83,7 @@ public class dlgStockData extends javax.swing.JDialog {
         setTitle("Stock");
         setIconImages(null);
 
-        jLabel1.setText("Search : ");
+        jLabel1.setText("Search by Name : ");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ public class dlgStockData extends javax.swing.JDialog {
                     Object data[] = {
                         rs.getInt("kode_produk"),
                         rs.getString("nama_produk"),
-                        rs.getInt("jumlah"),
+                        rs.getInt("stock"),
                         rs.getDouble("harga_beli"),
                         rs.getDouble("harga_jual")
                     };

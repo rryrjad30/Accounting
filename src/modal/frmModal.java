@@ -544,8 +544,8 @@ public class frmModal extends javax.swing.JFrame {
                     double kreditcash = 0;
                     String description = "Add " + txtNamaChart.getText();
                     String descriptioncash = txtNamaChart.getText();
-                    if (txtNamaChart.getText().equals("") || txtNoChart.getText().equals("")) {
-                        util.Sutil.mse(this, "No.chart and Nama chart must not empty !");
+                    if (txtNamaChart.getText().equals("") || txtNoChart.getText().equals("") || txtJumlah.getText().equals("")) {
+                        util.Sutil.mse(this, "Field must not empty !");
                     } else {
                         if (tblModal.getRowCount() == 0) {
                             double saldo = debitcash;
@@ -580,8 +580,8 @@ public class frmModal extends javax.swing.JFrame {
                     double kreditbank = 0;
                     String description = "Add " + txtNamaChart.getText();
                     String descriptionbank = txtNamaChart.getText();
-                    if (txtNamaChart.getText().equals("") || txtNoChart.getText().equals("")) {
-                        util.Sutil.mse(this, "No.chart and Nama chart must not empty !");
+                    if (txtNamaChart.getText().equals("") || txtNoChart.getText().equals("") || txtJumlah.getText().equals("")) {
+                        util.Sutil.mse(this, "Field must not empty !");
                     } else {
                         if (tblModal.getRowCount() == 0) {
                             double saldo = debitbank;
@@ -616,7 +616,7 @@ public class frmModal extends javax.swing.JFrame {
                     String description = "Prive from " + txtFrom.getText();
                     String descriptionprive = txtFrom.getText();
                     if (txtNamaChart.getText().equals("") || txtNoChart.getText().equals("") || 
-                            txtnochartfrom.getText().equals("") || txtFrom.getText().equals("")) {
+                            txtnochartfrom.getText().equals("") || txtFrom.getText().equals("") || txtJumlah.getText().equals("")) {
                         util.Sutil.mse(this, "Field from must not empty");
                     } else {
                         if (tblModal.getRowCount() == 0) {

@@ -191,7 +191,7 @@ public class dlgSalesData extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tblSalesData);
         tblSalesData.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-        jLabel1.setText("Search : ");
+        jLabel1.setText("Search by Name : ");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +215,7 @@ public class dlgSalesData extends javax.swing.JDialog {
                         .addComponent(txtSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearch)
-                        .addContainerGap(299, Short.MAX_VALUE))
+                        .addContainerGap(254, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 587, Short.MAX_VALUE)
                         .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))

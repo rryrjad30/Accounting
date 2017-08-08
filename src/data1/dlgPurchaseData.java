@@ -162,7 +162,7 @@ public class dlgPurchaseData extends javax.swing.JDialog {
         setTitle("Purchase Data");
         setIconImages(null);
 
-        jLabel1.setText("Search : ");
+        jLabel1.setText("Search by Name : ");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +218,7 @@ public class dlgPurchaseData extends javax.swing.JDialog {
                 .addComponent(txtSearchCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSearch)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,7 +247,7 @@ public class dlgPurchaseData extends javax.swing.JDialog {
         try {
             removeTableData();
             String sql = "SELECT p.idpembelian, p.tanggalpembelian, ds.namasupplier, p.grandtotal FROM "
-                    + "pembelian p inner join datasupplier ds on p.idsupplier = ds.idsupplier WHERE namasupplier like ?;s";
+                    + "pembelian p inner join datasupplier ds on p.idsupplier = ds.idsupplier WHERE namasupplier like ?;";
 
             PreparedStatement pstatement = conn.prepareStatement(sql);
             pstatement.setString(1, "%" + txtSearchCustomer.getText().trim() + "%");

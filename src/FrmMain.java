@@ -1207,7 +1207,7 @@ public class FrmMain extends javax.swing.JFrame {
             // -- jurnal -- //
             int nochartsales = 4010;
             int nochartppn = 1050;
-            int nochartdisc = 5120;
+            int nochartdisc = 4020;
             int nochartcash = 1010;
             int kodejurnal = Integer.parseInt(txtJ.getText());
 
@@ -1262,7 +1262,7 @@ public class FrmMain extends javax.swing.JFrame {
             // -- jurnal -- //
             int nochartsales = 4010;
             int nochartppn = 1050;
-            int nochartdisc = 5120;
+            int nochartdisc = 4020;
             int nochartTT = 1020;
             int kodejurnal = Integer.parseInt(txtJ.getText());
 
@@ -1316,7 +1316,7 @@ public class FrmMain extends javax.swing.JFrame {
 
             int nochartsales = 4010;
             int nochartppn = 1050;
-            int nochartdisc = 5120;
+            int nochartdisc = 4020;
             int nochartreceiveable = 1030;
             int kodejurnal = Integer.parseInt(txtJ.getText());
 
@@ -1339,7 +1339,7 @@ public class FrmMain extends javax.swing.JFrame {
 
                 // -- recieveable payable(rp) -- //
                 double debitrp = 0;
-                debitrp = debitsales - kreditdisc + debitppn;
+                debitrp = kreditsales - debitdisc + kreditppn;
                 double kreditrp = 0;
 
                 String description = "Sales to " + txtName.getText();
@@ -1369,7 +1369,7 @@ public class FrmMain extends javax.swing.JFrame {
 
             int nochartsales = 4010;
             int nochartppn = 1050;
-            int nochartdisc = 5120;
+            int nochartdisc = 4020;
             int nochartgr = 2030;
             int kodejurnal = Integer.parseInt(txtJ.getText());
 
